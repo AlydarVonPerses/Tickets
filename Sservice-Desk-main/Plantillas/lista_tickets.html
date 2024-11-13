@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tickets</title>
+</head>
+<body>
+    <h1>Lista de Tickets</h1>
+    <ul>
+        {% for ticket in tickets %}
+            <li>
+                <strong>{{ ticket.nombre_usuario }}</strong><br>
+                Fecha de creación: {{ ticket.fecha_creacion }}<br>
+                Estado: {{ ticket.estado }}<br>
+                <a href="{% url 'tickets:actualizar_estado' ticket.id %}">Actualizar Estado</a>
+                {% if ticket.estado != 'archivado' %}
+                    <a href="{% url 'tickets:archivar_ticket' ticket.id %}">Archivar</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'tickets:crear_ticket' %}">Crear nuevo ticket</a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Estado</title>
+</head>
+<body>
+    <h1>Actualizar Estado del Ticket</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="estado">Estado:</label>
+        <select name="estado" id="estado">
+            <option value="abierto" {% if ticket.estado == 'abierto' %}selected{% endif %}>Abierto</option>
+            <option value="cerrado" {% if ticket.estado == 'cerrado' %}selected{% endif %}>Cerrado</option>
+            <option value="archivado" {% if ticket.estado == 'archivado' %}selected{% endif %}>Archivado</option>
+        </select>
+        <button type="submit">Actualizar</button>
+    </form>
+    <a href="{% url 'tickets:lista_tickets' %}">Volver a la lista de tickets</a>
+</body>
+</html>

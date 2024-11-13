@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Ticket</title>
+</head>
+<body>
+    <h1>Crear un nuevo ticket</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button type="submit">Crear Ticket</button>
+    </form>
+    <a href="{% url 'tickets:lista_tickets' %}">Volver a la lista de tickets</a>
+</body>
+</html>
