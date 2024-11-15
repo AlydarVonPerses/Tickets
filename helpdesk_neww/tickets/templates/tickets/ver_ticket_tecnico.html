@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Ticket (Técnico)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Detalles del Ticket</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ticket #{{ ticket.id }}</h5>
+                <p><strong>Nombre de Usuario:</strong> {{ ticket.nombre_usuario }}</p>
+                <p><strong>Descripción:</strong> {{ ticket.descripcion }}</p>
+                <p><strong>Fecha de Creación:</strong> {{ ticket.fecha_creacion }}</p>
+                <p><strong>Estado:</strong> {{ ticket.estado }}</p>
+                <p><strong>Categoría:</strong> {{ ticket.categoria.nombre }}</p>
+                <p><strong>Prioridad:</strong> {{ ticket.prioridad.nombre }}</p>
+                {% if ticket.imagen %}
+                    <p><strong>Imagen:</strong></p>
+                    <img src="{{ ticket.imagen.url }}" alt="Imagen del ticket" class="img-fluid" style="max-width: 300px;">
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Botón de regresar para técnico -->
+        <a href="{% url 'tickets:listar_tickets_tecnico' %}" class="btn btn-secondary mt-3">Volver a la Lista</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
